@@ -1,0 +1,31 @@
+{{!-- src/templates/components/radio.hbs --}}
+
+<div class="ui-radios">
+  {{!-- Обычный (интерактивный) радиобаттон --}}
+  <label class="ui-radio">
+    <input type="radio" class="ui-radio__input" name="radio-demo" />
+    <span class="ui-radio__circle"></span>
+    <span class="ui-radio__label">{{ui.radio.label}}</span>
+  </label>
+
+  {{!-- Наведённый (hover) радиобаттон --}}
+  <label class="ui-radio hover">
+    <input type="radio" class="ui-radio__input" name="radio-demo" tabindex="-1" aria-disabled="true" />
+    <span class="ui-radio__circle"></span>
+    <span class="ui-radio__label">{{ui.radio.label}}</span>
+  </label>
+
+  {{!-- Нажатый (active) радиобаттон --}}
+  <label class="ui-radio active">
+    <input type="radio" class="ui-radio__input" name="radio-demo" checked tabindex="-1" aria-disabled="true" />
+    <span class="ui-radio__circle"></span>
+    <span class="ui-radio__label">{{ui.radio.label}}</span>
+  </label>
+
+  {{!-- Неактивный (disabled) радиобаттон --}}
+  <label class="ui-radio disabled">
+    <input type="radio" class="ui-radio__input" name="radio-demo" disabled />
+    <span class="ui-radio__circle"></span>
+    <span class="ui-radio__label">{{ui.radio.label}}</span>
+  </label>
+</div>

@@ -1,0 +1,14 @@
+{{!-- src/templates/components/accordion.hbs --}}
+
+<div class="ui-accordion-list">
+  {{#each ui.accordion.items}}
+    <div class="accordion">
+      <button class="accordion__toggle" type="button">
+        {{this.title}}
+      </button>
+      <div class="accordion__content">
+        {{~this.content~}}
+      </div>
+    </div>
+  {{/each}}
+</div>

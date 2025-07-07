@@ -1,0 +1,45 @@
+{{!-- src/templates/components/select.hbs --}}
+
+<div class="ui-selects">
+  {{!-- Обычный (интерактивный) select --}}
+  <div class="ui-select">
+    <button class="ui-select__toggle" type="button">
+      {{ui.select.placeholder}}
+    </button>
+    <ul class="ui-select__dropdown">
+      {{#each ui.select.options}}
+        <li class="ui-select__option{{#if this.selected}} selected{{/if}}" data-value="{{this.value}}">
+          {{this.label}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+
+  {{!-- Открытый select (для демонстрации состояния open) --}}
+  <div class="ui-select open">
+    <button class="ui-select__toggle" type="button">
+      {{ui.select.selectedLabel}}
+    </button>
+    <ul class="ui-select__dropdown" style="display: block;">
+      {{#each ui.select.options}}
+        <li class="ui-select__option{{#if this.selected}} selected{{/if}}" data-value="{{this.value}}">
+          {{this.label}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+
+  {{!-- Неактивный (disabled) select --}}
+  <div class="ui-select disabled">
+    <button class="ui-select__toggle" type="button" disabled>
+      {{ui.select.placeholder}}
+    </button>
+    <ul class="ui-select__dropdown">
+      {{#each ui.select.options}}
+        <li class="ui-select__option" data-value="{{this.value}}">
+          {{this.label}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+// src/styles/_sidebar.scss
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+/* ---------------------------
+   Sidebar (Якорное меню)
+--------------------------- */
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 100vh;
+  background: #fff;
+  border-right: 1px solid $color-border;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px 0 32px 0;
+  gap: 24px;
+
+  @include respond-to('tablet') {
+    width: 160px;
+    padding: 24px 0 16px 0;
+    gap: 16px;
+  }
+  @include respond-to('mobile') {
+    display: none; // На мобильных якорное меню скрыто
+  }
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.sidebar__link {
+  display: block;
+  width: 100%;
+  padding: 12px 32px 12px 40px;
+  font-family: $font-family-main;
+  font-size: 18px;
+  color: $color-text-secondary;
+  border-radius: 0 24px 24px 0;
+  background: transparent;
+  transition: color 0.2s, background 0.2s;
+
+  &:hover,
+  &:focus {
+    color: $color-text;
+    background: rgba($color-accent, 0.08);
+    outline: none;
+  }
+
+  &.is-active {
+    color: $color-accent;
+    background: rgba($color-accent, 0.18);
+    font-weight: 700;
+  }
+}
+
+.sidebar__spacer {
+  flex: 1 1 auto;
+}
+
+/* ---------------------------
+   Адаптивные размеры и отступы
+--------------------------- */
+@media (max-width: $breakpoint-tablet) {
+  .sidebar__link {
+    font-size: 16px;
+    padding: 10px 20px 10px 20px;
+  }
+}
+
+/* ---------------------------
+   Пример анимации появления (по желанию)
+--------------------------- */
+@keyframes sidebar-fade-in {
+  from { opacity: 0; transform: translateX(-24px);}
+  to   { opacity: 1; transform: translateX(0);}
+}
+.sidebar {
+  animation: sidebar-fade-in 0.5s;
+}

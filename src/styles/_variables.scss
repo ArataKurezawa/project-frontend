@@ -1,0 +1,144 @@
+// src/styles/_variables.scss
+
+/* ---------------------------
+   Цвета (по макету)
+--------------------------- */
+
+// Основные цвета
+$color-bg:        #f7f7fa;
+$color-white:     #fff;
+$color-black:     #222;
+$color-border:    #e0e0e8;
+
+// Акцентные цвета (фиолетовый и синий из макета)
+$color-accent:    #7c3aed; // Фиолетовый (primary accent)
+$color-primary:   #2563eb; // Синий (primary)
+$color-error:     #f43f5e; // Красный для ошибок
+$color-success:   #10b981; // Зеленый (если нужен)
+$color-disabled:  #e5e7eb; // Серый для disabled
+
+// Текст
+$color-text:           #222;
+$color-text-secondary: #757575;
+$color-text-disabled:  #bdbdbd;
+$color-placeholder:    #bdbdbd;
+
+/* ---------------------------
+   Шрифты
+--------------------------- */
+
+$font-family-main: 'GraphikLCG', Arial, sans-serif;
+
+/* ---------------------------
+   Размеры шрифтов и line-height (по макету)
+--------------------------- */
+
+// Desktop
+$h1-size:      48px;
+$h1-lh:        56px;
+$h2-size:      32px;
+$h2-lh:        40px;
+$h3-size:      24px;
+$h3-lh:        32px;
+$h4-size:      18px;
+$h4-lh:        28px;
+$lead-size:    24px;
+$lead-lh:      32px;
+$p18-size:     18px;
+$p18-lh:       28px;
+$p16-size:     16px;
+$p16-lh:       24px;
+$p14-size:     14px;
+$p14-lh:       20px;
+
+// Mobile (перекрываются в .typography--mobile)
+$h1-size-mobile:   32px;
+$h1-lh-mobile:     40px;
+$h2-size-mobile:   28px;
+$h2-lh-mobile:     36px;
+$h3-size-mobile:   20px;
+$h3-lh-mobile:     28px;
+$h4-size-mobile:   18px;
+$h4-lh-mobile:     28px;
+$lead-size-mobile: 20px;
+$lead-lh-mobile:   28px;
+$p18-size-mobile:  18px;
+$p18-lh-mobile:    28px;
+$p16-size-mobile:  16px;
+$p16-lh-mobile:    24px;
+$p14-size-mobile:  14px;
+$p14-lh-mobile:    20px;
+
+/* ---------------------------
+   Сетка (по макету)
+--------------------------- */
+
+// Desktop
+$grid-columns-desktop:         12;
+$grid-gutter-desktop:          32px;
+$grid-content-width-desktop-min: 1072px;
+$grid-content-width-desktop-max: 1312px;
+
+// Tablet
+$grid-columns-tablet:          8;
+$grid-gutter-tablet:           32px;
+$grid-content-width-tablet-min: 672px;
+$grid-content-width-tablet-max: 928px;
+
+// Mobile
+$grid-columns-mobile:          4;
+$grid-gutter-mobile:           24px;
+$grid-content-width-mobile-min: 296px;
+$grid-content-width-mobile-max: 424px;
+
+/* ---------------------------
+   Breakpoints
+--------------------------- */
+
+$breakpoint-desktop: 1199px; // >=1200px — desktop
+$breakpoint-tablet:  991px;  // 736px–1199px — tablet
+$breakpoint-mobile:  735px;  // <=735px — mobile
+
+/* ---------------------------
+   UI-компоненты
+--------------------------- */
+
+$border-radius-main: 24px;
+$border-radius-btn:  32px;
+$border-radius-sm:   8px;
+
+$transition-fast:    0.2s;
+$transition-slow:    0.4s;
+
+$box-shadow-main:    0 2px 8px rgba(34,34,34,0.10);
+$box-shadow-strong:  0 8px 32px rgba(34,34,34,0.16);
+
+/* ---------------------------
+   Z-индексы
+--------------------------- */
+
+$z-header:      1000;
+$z-sidebar:     100;
+$z-burger:      1100;
+$z-overlay:     1200;
+$z-dropdown:    1300;
+
+/* ---------------------------
+   Прочие переменные
+--------------------------- */
+
+$sidebar-width:      200px;
+$sidebar-width-tab:  160px;
+$header-height:      80px;
+$header-height-tab:  64px;
+$header-height-mob:  56px;
+$footer-height:      80px;
+
+/* ---------------------------
+   Экспорт для JS (если нужно)
+--------------------------- */
+// :export {
+//   colorAccent: $color-accent;
+//   colorPrimary: $color-primary;
+//   ...
+// }

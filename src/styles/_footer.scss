@@ -1,0 +1,42 @@
+// src/styles/_footer.scss
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+/* ---------------------------
+   Footer (Подвал)
+--------------------------- */
+
+.footer {
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-top: 1px solid $color-border;
+  margin-top: 48px;
+
+  @include respond-to('tablet') {
+    min-height: 64px;
+    margin-top: 32px;
+  }
+  @include respond-to('mobile') {
+    min-height: 56px;
+    margin-top: 24px;
+  }
+
+  &__text {
+    font-family: $font-family-main;
+    font-size: 24px;
+    font-weight: 700;
+    color: $color-accent;
+    letter-spacing: 0.02em;
+    text-align: center;
+    line-height: 1.2;
+
+    @include respond-to('mobile') {
+      font-size: 18px;
+    }
+  }
+}

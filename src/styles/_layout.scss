@@ -1,0 +1,137 @@
+// src/styles/_layout.scss
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+/* ---------------------------
+   Layout: Базовый контейнер
+--------------------------- */
+.layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: $color-bg;
+}
+
+/* ---------------------------
+   Sidebar (Якорное меню)
+--------------------------- */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 100vh;
+  background: #fff;
+  border-right: 1px solid $color-border;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 0 24px 0;
+
+  @include respond-to('tablet') {
+    width: 160px;
+    padding: 24px 0 16px 0;
+  }
+  @include respond-to('mobile') {
+    display: none; // На мобилке якорное меню скрыто
+  }
+}
+
+/* ---------------------------
+   Основная область контента
+--------------------------- */
+.layout__main {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0;
+  background: $color-bg;
+  display: flex;
+  flex-direction: column;
+  margin-left: 200px;
+
+  @include respond-to('tablet') {
+    margin-left: 160px;
+  }
+  @include respond-to('mobile') {
+    margin-left: 0;
+  }
+}
+
+/* ---------------------------
+   Grid-контейнер (адаптивная сетка)
+--------------------------- */
+.grid {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat($grid-columns-desktop, 1fr);
+  gap: $grid-gutter-desktop;
+  min-width: $grid-content-width-desktop-min;
+  max-width: $grid-content-width-desktop-max;
+
+  @include respond-to('tablet') {
+    grid-template-columns: repeat($grid-columns-tablet, 1fr);
+    gap: $grid-gutter-tablet;
+    min-width: $grid-content-width-tablet-min;
+    max-width: $grid-content-width-tablet-max;
+  }
+
+  @include respond-to('mobile') {
+    grid-template-columns: repeat($grid-columns-mobile, 1fr);
+    gap: $grid-gutter-mobile;
+    min-width: $grid-content-width-mobile-min;
+    max-width: $grid-content-width-mobile-max;
+  }
+}
+
+/* ---------------------------
+   Grid-колонка (универсальный класс)
+--------------------------- */
+// Пример: .grid__col--4 занимает 4 колонки из 12/8/4 в зависимости от брейкпоинта
+@for $i from 1 through 12 {
+  .grid__col--#{$i} {
+    grid-column: span $i;
+  }
+}
+
+@include respond-to('tablet') {
+  @for $i from 1 through 8 {
+    .grid__col--#{$i}-tablet {
+      grid-column: span $i;
+    }
+  }
+}
+@include respond-to('mobile') {
+  @for $i from 1 through 4 {
+    .grid__col--#{$i}-mobile {
+      grid-column: span $i;
+    }
+  }
+}
+
+/* ---------------------------
+   Вспомогательные классы для отступов и выравнивания
+--------------------------- */
+.mt-0 { margin-top: 0 !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.mt-24 { margin-top: 24px !important; }
+.mb-24 { margin-bottom: 24px !important; }
+.mt-40 { margin-top: 40px !important; }
+.mb-40 { margin-bottom: 40px !important; }
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+.text-left { text-align: left !important; }
+
+/* ---------------------------
+   Scrollbar стилизация (по желанию)
+--------------------------- */
+::-webkit-scrollbar {
+  width: 8px;
+  background: $color-bg;
+}
+::-webkit-scrollbar-thumb {
+  background: $color-border;
+  border-radius: 4px;
+}

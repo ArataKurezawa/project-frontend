@@ -1,0 +1,42 @@
+{{!-- src/templates/sections/ui.hbs --}}
+
+<section class="section section--ui" id="ui">
+  <h2 class="section__title">
+    {{content.sections.uiTitle}}
+  </h2>
+  <div class="section__desc">
+    {{content.sections.uiDesc}}
+  </div>
+
+  <div class="ui-demo">
+    <div class="ui-demo__group">
+      <h3 class="ui-demo__subtitle">Кнопка</h3>
+      {{> components/button }}
+    </div>
+
+    <div class="ui-demo__group">
+      <h3 class="ui-demo__subtitle">Текстовое поле</h3>
+      {{> components/input }}
+    </div>
+
+    <div class="ui-demo__group">
+      <h3 class="ui-demo__subtitle">Чекбокс</h3>
+      {{> components/checkbox }}
+    </div>
+
+    <div class="ui-demo__group">
+      <h3 class="ui-demo__subtitle">Радиобаттон</h3>
+      {{> components/radio }}
+    </div>
+
+    <div class="ui-demo__group">
+      <h3 class="ui-demo__subtitle">Выпадающий список</h3>
+      {{> components/select }}
+    </div>
+
+    <div class="ui-demo__group">
+      <h3 class="ui-demo__subtitle">Аккордеон</h3>
+      {{> components/accordion }}
+    </div>
+  </div>
+</section>

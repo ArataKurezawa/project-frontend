@@ -1,0 +1,31 @@
+<!-- src/index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Тестовое задание — Иванов Иван Иванович</title>
+    <meta name="description" content="Адаптивная страница по макету. Автор: Иванов Иван Иванович" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Graphik LCG: подключил через @font-face в SCSS ИЛИ через CDN (если есть) -->
+    <!--
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/your-gist-id/graphik.css" />
+    -->
+    <!-- Если шрифт лежит в /src/assets/fonts, подключи его через SCSS:
+         @font-face {
+           font-family: 'GraphikLCG';
+           src: url('/src/assets/fonts/GraphikLCG-Regular.woff2') format('woff2'),
+                url('/src/assets/fonts/GraphikLCG-Regular.woff') format('woff');
+           font-weight: 400;
+           font-style: normal;
+           font-display: swap;
+         }
+         (см. src/styles/_base.scss или _variables.scss)
+    -->
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "project-frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "eslint": "^9.30.1",
+    "prettier": "^3.6.2",
+    "sass": "^1.89.2",
+    "vite": "^7.0.2",
+    "vite-plugin-handlebars": "^2.0.0"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.8"
+  }
+}

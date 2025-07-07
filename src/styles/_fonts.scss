@@ -1,0 +1,53 @@
+// src/styles/_fonts.scss
+
+/* ---------------------------
+   Подключение шрифта Graphik LCG
+   (если нет лицензии — подключи максимально похожий, например, Inter)
+--------------------------- */
+
+@font-face {
+  font-family: 'GraphikLCG';
+  src:
+    url('../assets/fonts/GraphikLCG/GraphikLCG-Regular.woff2') format('woff2'),
+    url('../assets/fonts/GraphikLCG/GraphikLCG-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GraphikLCG';
+  src:
+    url('../assets/fonts/GraphikLCG/GraphikLCG-Medium.woff2') format('woff2'),
+    url('../assets/fonts/GraphikLCG/GraphikLCG-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GraphikLCG';
+  src:
+    url('../assets/fonts/GraphikLCG/GraphikLCG-Bold.woff2') format('woff2'),
+    url('../assets/fonts/GraphikLCG/GraphikLCG-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------------------------
+   Базовое семейство шрифтов
+--------------------------- */
+
+body {
+  font-family: 'GraphikLCG', Arial, sans-serif;
+}
+
+/* ---------------------------
+   Классы для быстрого применения веса
+--------------------------- */
+
+.font-regular { font-weight: 400 !important; }
+.font-medium  { font-weight: 500 !important; }
+.font-bold    { font-weight: 700 !important; }
+

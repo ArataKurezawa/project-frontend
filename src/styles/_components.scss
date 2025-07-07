@@ -1,0 +1,382 @@
+// src/styles/_components.scss
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+/* ---------------------------
+   Кнопка (Button)
+--------------------------- */
+.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  height: 48px;
+  padding: 0 32px;
+  border-radius: 32px;
+  font-family: $font-family-main;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(90deg, $color-primary 0%, $color-accent 100%);
+  box-shadow: 0 2px 8px rgba(34, 34, 34, 0.10);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(90deg, $color-accent 0%, $color-primary 100%);
+  }
+  &:active:not(:disabled) {
+    background: $color-accent;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(34, 34, 34, 0.16);
+  }
+  &:disabled,
+  &.is-disabled {
+    background: $color-disabled;
+    color: $color-text-disabled;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+/* ---------------------------
+   Текстовое поле (Input)
+--------------------------- */
+.ui-input {
+  position: relative;
+  width: 100%;
+  margin-bottom: 24px;
+
+  &__field {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    font-size: 18px;
+    font-family: $font-family-main;
+    border: none;
+    border-bottom: 2px solid $color-border;
+    background: transparent;
+    color: $color-text;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-bottom: 2px solid $color-accent;
+    }
+    &:not(:placeholder-shown) {
+      border-bottom: 2px solid $color-accent;
+      font-weight: 500;
+    }
+    &:disabled {
+      border-bottom: 2px solid $color-disabled;
+      color: $color-text-disabled;
+      background: #f4f4f4;
+      cursor: not-allowed;
+    }
+    &.is-error {
+      border-bottom: 2px solid $color-error;
+      color: $color-error;
+    }
+  }
+
+  &__placeholder {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    font-size: 18px;
+    color: $color-placeholder;
+    pointer-events: none;
+    transition: 0.2s;
+  }
+
+  &__field:focus + &__placeholder,
+  &__field:not(:placeholder-shown) + &__placeholder {
+    top: -10px;
+    left: 0;
+    font-size: 14px;
+    color: $color-accent;
+  }
+
+  &__hint {
+    font-size: 14px;
+    color: $color-error;
+    margin-top: 4px;
+    min-height: 18px;
+    transition: color 0.2s;
+  }
+}
+
+/* ---------------------------
+   Кастомный select
+--------------------------- */
+.ui-select {
+  position: relative;
+  width: 100%;
+  margin-bottom: 24px;
+
+  &__button {
+    width: 100%;
+    height: 48px;
+    padding: 0 40px 0 16px;
+    font-size: 18px;
+    font-family: $font-family-main;
+    color: $color-text;
+    background: #fff;
+    border: none;
+    border-bottom: 2px solid $color-border;
+    border-radius: 0;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.2s;
+
+    &:hover, &:focus {
+      border-bottom: 2px solid $color-accent;
+    }
+    &.is-open {
+      border-bottom: 2px solid $color-accent;
+    }
+    &:disabled {
+      border-bottom: 2px solid $color-disabled;
+      color: $color-text-disabled;
+      background: #f4f4f4;
+      cursor: not-allowed;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    transform: translateY(-50%);
+    pointer-events: none;
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      fill: $color-accent;
+      transition: transform 0.2s;
+    }
+    .is-open & {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: 10;
+    background: #fff;
+    border: 1px solid $color-border;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 4px 24px rgba(34, 34, 34, 0.10);
+    margin-top: 4px;
+    padding: 8px 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+
+    &.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &__option {
+    padding: 12px 24px;
+    font-size: 18px;
+    color: $color-text;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover, &.is-selected {
+      background: $color-accent;
+      color: #fff;
+    }
+  }
+}
+
+/* ---------------------------
+   Чекбокс
+--------------------------- */
+.ui-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+
+  &__input {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid $color-border;
+    border-radius: 4px;
+    background: #fff;
+    transition: border-color $transition-fast, background $transition-fast;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-accent;
+    }
+    &:checked {
+      border-color: $color-accent;
+      background: $color-accent;
+    }
+    &:checked::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      width: 8px;
+      height: 14px;
+      border: solid #fff;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+    }
+    &:disabled {
+      border-color: $color-disabled;
+      background: #f4f4f4;
+      cursor: not-allowed;
+    }
+  }
+
+  &__label {
+    font-size: 16px;
+    color: $color-text;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
+
+/* ---------------------------
+   Радиобаттон
+--------------------------- */
+.ui-radio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+
+  &__input {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid $color-border;
+    border-radius: 50%;
+    background: #fff;
+    transition: border-color $transition-fast, background $transition-fast;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-accent;
+    }
+    &:checked {
+      border-color: $color-accent;
+      background: $color-accent;
+    }
+    &:checked::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff;
+    }
+    &:disabled {
+      border-color: $color-disabled;
+      background: #f4f4f4;
+      cursor: not-allowed;
+    }
+  }
+
+  &__label {
+    font-size: 16px;
+    color: $color-text;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
+
+/* ---------------------------
+   Аккордеон
+--------------------------- */
+.ui-accordion {
+  border-bottom: 1px solid $color-border;
+  margin-bottom: 24px;
+
+  &__item {
+    border-bottom: 1px solid $color-border;
+    transition: border-color 0.2s;
+    &:hover {
+      border-color: $color-accent;
+    }
+    &.is-open {
+      border-color: $color-accent;
+      font-weight: 500;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 16px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: $color-text;
+    transition: color 0.2s;
+    user-select: none;
+    -webkit-user-select: none;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s;
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      fill: $color-accent;
+    }
+    .is-open & {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+    padding: 0 0;
+
+    &.is-open {
+      max-height: 500px; // достаточно для текста
+      padding: 8px 0 16px 0;
+    }
+  }
+}

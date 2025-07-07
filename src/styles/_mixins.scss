@@ -1,0 +1,129 @@
+// src/styles/_mixins.scss
+
+@use 'variables' as *;
+
+/* ---------------------------
+   Миксины для адаптивности
+--------------------------- */
+
+// Используй переменные из _variables.scss: $breakpoint-desktop, $breakpoint-tablet, $breakpoint-mobile
+
+/// Миксин для медиа-запроса (адаптив)
+/// @param {String} $breakpoint - 'desktop', 'tablet', 'mobile'
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'desktop' {
+    @media (max-width: $breakpoint-desktop) { @content; }
+  }
+  @else if $breakpoint == 'tablet' {
+    @media (max-width: $breakpoint-tablet) { @content; }
+  }
+  @else if $breakpoint == 'mobile' {
+    @media (max-width: $breakpoint-mobile) { @content; }
+  }
+}
+
+/* ---------------------------
+   Миксины для Flexbox
+--------------------------- */
+
+/// Быстрый flex-контейнер
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* ---------------------------
+   Миксины для Grid
+--------------------------- */
+
+/// Адаптивная сетка (пример, если нужно)
+@mixin grid-columns($count) {
+  display: grid;
+  grid-template-columns: repeat($count, 1fr);
+  gap: $grid-gutter-desktop;
+}
+
+/* ---------------------------
+   Миксины для анимаций и переходов
+--------------------------- */
+
+/// Плавный переход для стандартных свойств
+@mixin transition($props: all, $time: 0.2s, $func: ease) {
+  transition: $props $time $func;
+}
+
+/// Анимация появления (fade-in)
+@mixin fade-in($duration: 0.3s) {
+  animation: fade-in $duration both;
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/// Анимация выезда снизу (slide-up)
+@mixin slide-up($duration: 0.3s) {
+  animation: slide-up $duration both;
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
+/* ---------------------------
+   Миксины для скруглений и теней
+--------------------------- */
+
+@mixin rounded($radius: 16px) {
+  border-radius: $radius;
+}
+@mixin shadow($color: rgba(34,34,34,0.10), $y: 2px, $blur: 8px) {
+  box-shadow: 0 $y $blur $color;
+}
+
+/* ---------------------------
+   Миксины для обрезки текста
+--------------------------- */
+
+/// Обрезка в одну строку с троеточием
+@mixin ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/// Обрезка в несколько строк (line-clamp)
+@mixin line-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---------------------------
+   Пример использования миксинов:
+--------------------------- */
+
+// .my-block {
+//   @include flex-center;
+//   @include rounded(24px);
+//   @include shadow();
+//   @include transition(background);
+//   @include respond-to('mobile') {
+//     flex-direction: column;
+//   }
+// }

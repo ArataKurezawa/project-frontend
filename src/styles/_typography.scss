@@ -1,0 +1,189 @@
+// src/styles/_typography.scss
+@use 'variables' as *;
+@use 'mixins' as *;
+
+/* ---------------------------
+   Блок "Типографика" с переключением
+--------------------------- */
+
+.typography-switch {
+  background: $color-white;
+  border-radius: 24px;
+  box-shadow: $box-shadow-main;
+  padding: 32px 40px;
+  max-width: 600px;
+  margin: 0 auto 48px auto;
+  @include respond-to('mobile') {
+    padding: 20px 8px;
+    max-width: 100%;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+}
+
+.typography-switch__controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.typography-switch__btn {
+  padding: 8px 32px;
+  font-size: 18px;
+  font-weight: 500;
+  color: $color-text-secondary;
+  background: $color-bg;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  &:hover, &:focus {
+    background: $color-accent;
+    color: $color-white;
+  }
+  &.active {
+    background: $color-accent;
+    color: $color-white;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba($color-accent, 0.1);
+  }
+}
+
+.typography-switch__content {
+  display: none;
+  animation: fade-in 0.3s both;
+  &.active {
+    display: block;
+  }
+}
+
+/* ---------------------------
+   Типографика внутри "окошка"
+--------------------------- */
+
+.typography-demo {
+  // внутри .typography-switch__content!
+  .typo-h1 {
+    font-size: $h1-size;
+    line-height: $h1-lh;
+    font-weight: 700;
+    margin-bottom: 24px;
+    @include respond-to('mobile') {
+      font-size: $h1-size-mobile;
+      line-height: $h1-lh-mobile;
+      margin-bottom: 16px;
+    }
+  }
+  .typo-h2 {
+    font-size: $h2-size;
+    line-height: $h2-lh;
+    font-weight: 700;
+    margin-bottom: 20px;
+    @include respond-to('mobile') {
+      font-size: $h2-size-mobile;
+      line-height: $h2-lh-mobile;
+      margin-bottom: 12px;
+    }
+  }
+  .typo-h3 {
+    font-size: $h3-size;
+    line-height: $h3-lh;
+    font-weight: 500;
+    margin-bottom: 16px;
+    @include respond-to('mobile') {
+      font-size: $h3-size-mobile;
+      line-height: $h3-lh-mobile;
+      margin-bottom: 8px;
+    }
+  }
+  .typo-h4 {
+    font-size: $h4-size;
+    line-height: $h4-lh;
+    font-weight: 500;
+    margin-bottom: 12px;
+    @include respond-to('mobile') {
+      font-size: $h4-size-mobile;
+      line-height: $h4-lh-mobile;
+      margin-bottom: 8px;
+    }
+  }
+  .typo-lead {
+    font-size: $lead-size;
+    line-height: $lead-lh;
+    font-weight: 400;
+    margin-bottom: 16px;
+    @include respond-to('mobile') {
+      font-size: $lead-size-mobile;
+      line-height: $lead-lh-mobile;
+    }
+  }
+  .typo-p18 {
+    font-size: $p18-size;
+    line-height: $p18-lh;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+  .typo-p16 {
+    font-size: $p16-size;
+    line-height: $p16-lh;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+  .typo-p14 {
+    font-size: $p14-size;
+    line-height: $p14-lh;
+    font-weight: 400;
+    color: $color-text-secondary;
+    margin-bottom: 8px;
+  }
+}
+
+/* ---------------------------
+   Общая типографика для страницы
+--------------------------- */
+
+body {
+  font-family: $font-family-main;
+  font-size: $p16-size;
+  color: $color-text;
+  line-height: $p16-lh;
+  background: $color-bg;
+}
+
+a {
+  color: $color-accent;
+  text-decoration: underline;
+  @include transition(color);
+  &:hover,
+  &:focus {
+    color: $color-primary;
+    text-decoration: underline;
+  }
+}
+
+.bold { font-weight: 700 !important; }
+.medium { font-weight: 500 !important; }
+.regular { font-weight: 400 !important; }
+.text-accent { color: $color-accent !important; }
+.text-primary { color: $color-primary !important; }
+.text-secondary { color: $color-text-secondary !important; }
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+.text-left { text-align: left !important; }
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* ---------------------------
+   Анимация появления
+--------------------------- */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

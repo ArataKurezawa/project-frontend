@@ -1,0 +1,75 @@
+{{!-- src/templates/components/input.hbs --}}
+
+<div class="ui-inputs">
+  {{!-- Обычное (интерактивное) поле --}}
+  <div class="ui-email">
+    <input
+      type="email"
+      class="ui-email__input"
+      id="email-input"
+      required
+      autocomplete="off"
+    />
+    <label for="email-input" class="ui-email__label">
+      {{ui.input.label}}
+    </label>
+    <span class="ui-email__error" style="display:none;">
+      {{ui.input.hint}}
+    </span>
+  </div>
+
+  {{!-- Наведённое (hover) поле --}}
+  <div class="ui-email hover">
+    <input
+      type="email"
+      class="ui-email__input"
+      id="email-input-hover"
+      autocomplete="off"
+      tabindex="-1"
+      aria-disabled="true"
+    />
+    <label for="email-input-hover" class="ui-email__label">
+      {{ui.input.label}}
+    </label>
+    <span class="ui-email__error" style="display:none;">
+      {{ui.input.hint}}
+    </span>
+  </div>
+
+  {{!-- Поле с ошибкой (invalid) --}}
+  <div class="ui-email invalid">
+    <input
+      type="email"
+      class="ui-email__input"
+      id="email-input-invalid"
+      autocomplete="off"
+      value="not-email"
+      tabindex="-1"
+      aria-invalid="true"
+    />
+    <label for="email-input-invalid" class="ui-email__label">
+      {{ui.input.label}}
+    </label>
+    <span class="ui-email__error">
+      {{ui.input.hint}}
+    </span>
+  </div>
+
+  {{!-- Неактивное (disabled) поле --}}
+  <div class="ui-email disabled">
+    <input
+      type="email"
+      class="ui-email__input"
+      id="email-input-disabled"
+      autocomplete="off"
+      disabled
+      tabindex="-1"
+    />
+    <label for="email-input-disabled" class="ui-email__label">
+      {{ui.input.label}}
+    </label>
+    <span class="ui-email__error" style="display:none;">
+      {{ui.input.hint}}
+    </span>
+  </div>
+</div>
