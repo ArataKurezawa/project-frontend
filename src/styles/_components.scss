@@ -6,377 +6,554 @@
 /* ---------------------------
    Кнопка (Button)
 --------------------------- */
-.ui-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 160px;
-  height: 48px;
-  padding: 0 32px;
-  border-radius: 32px;
+.ui-btn {
+  display: inline-block;
+  min-width: 180px;
+  padding: 16px 40px;
+  font-size: 20px;
   font-family: $font-family-main;
-  font-size: 18px;
   font-weight: 700;
   color: #fff;
-  background: linear-gradient(90deg, $color-primary 0%, $color-accent 100%);
-  box-shadow: 0 2px 8px rgba(34, 34, 34, 0.10);
   border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #7c3aed 70%, #2563eb 30%);
+  box-shadow: 0 2px 12px rgba(34,34,34,0.08);
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  transition: 
+    background 0.3s cubic-bezier(.4,0,.2,1),
+    box-shadow 0.2s,
+    opacity 0.2s;
 
+  // Ховер — градиент наоборот
   &:hover:not(:disabled) {
-    background: linear-gradient(90deg, $color-accent 0%, $color-primary 100%);
+    background: linear-gradient(135deg, #2563eb 30%, #7c3aed 70%);
+    box-shadow: 0 4px 16px rgba(34,34,34,0.14);
   }
+
+  // Нажатие — синий занимает 50%
   &:active:not(:disabled) {
-    background: $color-accent;
-    color: #fff;
-    box-shadow: 0 2px 8px rgba(34, 34, 34, 0.16);
+    background: linear-gradient(135deg, #2563eb 50%, #7c3aed 50%);
+    box-shadow: 0 2px 8px rgba(34,34,34,0.10);
   }
+
+  // Неактивна — серая, курсор обычный
   &:disabled,
   &.is-disabled {
-    background: $color-disabled;
-    color: $color-text-disabled;
+    background: #e0e0e0;
+    color: #bdbdbd;
     cursor: not-allowed;
+    opacity: 0.7;
     box-shadow: none;
   }
 }
 
+
 /* ---------------------------
    Текстовое поле (Input)
 --------------------------- */
+.ui-section {
+  margin-bottom: 64px;
+
+  &__title {
+    font-family: $font-family-main;
+    font-size: 32px; // Сделать как у других секций
+    line-height: 40px;
+    font-weight: 700;
+    color: $color-text;
+    margin-bottom: 32px;
+    scroll-margin-top: 100px; // для якоря!
+  }
+
+  &__group {
+    margin-bottom: 40px;
+    padding-top: 16px; // ДОБАВЛЯЕМ ОТСТУП сверху для поля
+  }
+
+  &__label {
+    font-size: 18px;
+    font-weight: 500;
+    color: $color-text-secondary;
+    margin-bottom: 20px; // увеличить отступ между подписью и полем
+    display: block;
+  }
+
+  &__input-demo {
+    // если нужно ещё больше места — можно добавить margin-top
+    // margin-top: 8px;
+  }
+}
+
 .ui-input {
-  position: relative;
-  width: 100%;
-  margin-bottom: 24px;
+  width: 340px;
+  max-width: 100%;
 
   &__field {
+    display: flex;
+    flex-direction: column;
+    position: relative;
     width: 100%;
-    height: 48px;
-    padding: 0 16px;
+  }
+
+  &__control {
+    width: 100%;
     font-size: 18px;
     font-family: $font-family-main;
+    line-height: 28px;
     border: none;
-    border-bottom: 2px solid $color-border;
-    background: transparent;
+    border-bottom: 2px solid #e0e0e0;
+    outline: none;
+    padding: 18px 8px 6px 8px;
+    background: #fff;
     color: $color-text;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, border-width 0.2s;
+    font-weight: 400;
 
     &:focus {
       border-bottom: 2px solid $color-accent;
     }
+
     &:not(:placeholder-shown) {
-      border-bottom: 2px solid $color-accent;
-      font-weight: 500;
-    }
-    &:disabled {
-      border-bottom: 2px solid $color-disabled;
-      color: $color-text-disabled;
-      background: #f4f4f4;
-      cursor: not-allowed;
-    }
-    &.is-error {
-      border-bottom: 2px solid $color-error;
-      color: $color-error;
+      border-bottom: 3px solid $color-accent;
     }
   }
 
-  &__placeholder {
+  &__label {
     position: absolute;
-    left: 16px;
-    top: 16px;
+    left: 8px;
+    top: 18px;
     font-size: 18px;
-    color: $color-placeholder;
+    color: #bdbdbd;
     pointer-events: none;
-    transition: 0.2s;
+    transition: 0.2s cubic-bezier(.4,0,.2,1);
+    font-weight: 500;
+    background: #fff;
+    padding: 0 4px;
+    z-index: 2;
   }
 
-  &__field:focus + &__placeholder,
-  &__field:not(:placeholder-shown) + &__placeholder {
-    top: -10px;
+  // Анимация label: вверх, меньше, синий
+  &__control:focus ~ .ui-input__label,
+  &__control:not(:placeholder-shown) ~ .ui-input__label {
+    top: -14px;
     left: 0;
     font-size: 14px;
     color: $color-accent;
+    background: #fff;
+    padding: 0 4px;
   }
 
-  &__hint {
-    font-size: 14px;
+  // Ошибка
+  &.is-error &__control {
+    border-bottom: 2px solid $color-error;
+  }
+  &.is-error &__label {
     color: $color-error;
+  }
+  &.is-error &__error {
+    display: block;
+    color: $color-error;
+    font-size: 14px;
     margin-top: 4px;
-    min-height: 18px;
+    font-weight: 500;
+  }
+
+  &__error {
+    display: none;
+    min-height: 20px;
     transition: color 0.2s;
   }
 }
+
+
+$color-accent: #7c3aed; // твой синий/фиолетовый
+$color-error: #f44336;  // красный для ошибки
+$color-text: #222;
+$color-text-secondary: #757575;
+
 
 /* ---------------------------
    Кастомный select
 --------------------------- */
 .ui-select {
   position: relative;
-  width: 100%;
-  margin-bottom: 24px;
+  width: 340px;
+  max-width: 100%;
+  font-family: $font-family-main;
+  outline: none;
 
-  &__button {
-    width: 100%;
-    height: 48px;
-    padding: 0 40px 0 16px;
-    font-size: 18px;
-    font-family: $font-family-main;
-    color: $color-text;
-    background: #fff;
-    border: none;
-    border-bottom: 2px solid $color-border;
-    border-radius: 0;
-    text-align: left;
+  &__field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #e0e0e0;
+    padding: 18px 8px 6px 8px;
     cursor: pointer;
+    background: #fff;
     transition: border-color 0.2s;
+    min-height: 48px;
+  }
 
-    &:hover, &:focus {
-      border-bottom: 2px solid $color-accent;
-    }
-    &.is-open {
-      border-bottom: 2px solid $color-accent;
-    }
-    &:disabled {
-      border-bottom: 2px solid $color-disabled;
-      color: $color-text-disabled;
-      background: #f4f4f4;
-      cursor: not-allowed;
-    }
+  &__value {
+    font-size: 18px;
+    color: $color-text;
+    user-select: none;
   }
 
   &__arrow {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    width: 24px;
-    height: 24px;
-    transform: translateY(-50%);
-    pointer-events: none;
-
-    svg {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    position: relative;
+    transition: transform 0.2s;
+    &::before {
+      content: '';
       display: block;
-      width: 100%;
-      height: 100%;
-      fill: $color-accent;
-      transition: transform 0.2s;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid $color-accent;
+      margin: auto;
+      position: absolute;
+      left: 2px; right: 2px; top: 6px;
     }
-    .is-open & {
-      transform: translateY(-50%) rotate(180deg);
-    }
+  }
+
+  // Ховер и открытие — синяя полоса
+  &:hover &__field,
+  &.is-open &__field {
+    border-bottom: 2px solid $color-accent;
+  }
+
+  // Открыто — стрелка вверх
+  &.is-open &__arrow {
+    transform: rotate(180deg);
   }
 
   &__dropdown {
+    display: none;
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: 10;
+    left: 0; right: 0; top: 100%;
     background: #fff;
-    border: 1px solid $color-border;
     border-radius: 0 0 16px 16px;
-    box-shadow: 0 4px 24px rgba(34, 34, 34, 0.10);
-    margin-top: 4px;
-    padding: 8px 0;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-
-    &.is-open {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    box-shadow: 0 4px 24px rgba(34,34,34,0.10);
+    z-index: 10;
+    margin-top: 2px;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+  }
+  &.is-open &__dropdown {
+    display: block;
+    animation: fade-in 0.15s;
   }
 
   &__option {
-    padding: 12px 24px;
     font-size: 18px;
     color: $color-text;
+    padding: 14px 16px;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.15s, color 0.15s;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
 
-    &:hover, &.is-selected {
+    &:last-child {
+      border-bottom: none;
+    }
+    &:hover {
+      background: #f1f6ff;
+      color: $color-accent;
+    }
+    &.is-selected {
+      color: $color-accent;
+      font-weight: 700;
+      background: #f7f5ff;
+    }
+    &.is-recommend {
       background: $color-accent;
       color: #fff;
+      font-size: 16px;
+      font-style: italic;
+      font-weight: 500;
+      // pointer-events: none;  // НЕ НУЖНО, чтобы пункт выбирался!
+    }
+    &.is-selected.is-recommend {
+      background: $color-accent;
+      color: #fff;
+      font-weight: 700;
     }
   }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 /* ---------------------------
    Чекбокс
 --------------------------- */
+// Чекбокс
 .ui-checkbox {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
   cursor: pointer;
   user-select: none;
-  -webkit-user-select: none;
+  font-family: $font-family-main;
+  font-size: 16px;
+  color: $color-text; // Основной цвет текста
 
   &__input {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid $color-border;
-    border-radius: 4px;
-    background: #fff;
-    transition: border-color $transition-fast, background $transition-fast;
-    position: relative;
-    cursor: pointer;
+    // Скрываем нативный чекбокс
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
 
-    &:hover {
-      border-color: $color-accent;
-    }
-    &:checked {
-      border-color: $color-accent;
-      background: $color-accent;
-    }
-    &:checked::after {
+  &__custom {
+    display: inline-flex;
+    width: 24px; // Размер квадрата
+    height: 24px;
+    border: 2px solid #bdbdbd; // Серая рамка
+    border-radius: 4px; // Закругленные углы
+    margin-right: 12px; // Отступ от текста
+    background-color: #fff;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    position: relative; // Для галочки
+
+    // Галочка (скрыта по умолчанию)
+    &::after {
       content: '';
-      display: block;
       position: absolute;
-      left: 4px;
-      top: 1px;
-      width: 8px;
-      height: 14px;
-      border: solid #fff;
+      left: 50%;
+      top: 50%;
+      width: 6px;
+      height: 12px;
+      border: solid #fff; // Белая галочка
       border-width: 0 3px 3px 0;
-      transform: rotate(45deg);
-    }
-    &:disabled {
-      border-color: $color-disabled;
-      background: #f4f4f4;
-      cursor: not-allowed;
+      transform: translate(-50%, -50%) rotate(45deg) scale(0); // Скрыта и повернута
+      transition: transform 0.2s ease;
+      opacity: 0;
     }
   }
 
-  &__label {
-    font-size: 16px;
+  &__label-text {
     color: $color-text;
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
+    transition: color 0.2s;
+  }
+
+  // Состояния
+  &:hover &__custom {
+    border-color: $color-accent; // При наведении - синяя рамка
+  }
+
+  // При наведении на label, текст меняет цвет
+  &:hover &__label-text {
+    color: $color-accent;
+  }
+
+  &__input:checked + &__custom {
+    background-color: $color-accent; // При нажатии - синий фон
+    border-color: $color-accent; // Синяя рамка
+  }
+
+  &__input:checked + &__custom::after {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1); // Галочка появляется
+    opacity: 1;
+  }
+
+  &__input:checked ~ &__label-text {
+    color: $color-text; // Текст "Птица счастья завтрашнего дня"
   }
 }
 
-/* ---------------------------
-   Радиобаттон
---------------------------- */
+// Радиобаттон
 .ui-radio {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
   cursor: pointer;
   user-select: none;
-  -webkit-user-select: none;
+  font-family: $font-family-main;
+  font-size: 16px;
+  color: $color-text; // Основной цвет текста
 
   &__input {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid $color-border;
-    border-radius: 50%;
-    background: #fff;
-    transition: border-color $transition-fast, background $transition-fast;
-    position: relative;
-    cursor: pointer;
+    // Скрываем нативный радиобаттон
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
 
-    &:hover {
-      border-color: $color-accent;
-    }
-    &:checked {
-      border-color: $color-accent;
-      background: $color-accent;
-    }
-    &:checked::after {
+  &__custom {
+    display: inline-flex;
+    width: 24px; // Размер круга
+    height: 24px;
+    border: 2px solid #bdbdbd; // Серая рамка
+    border-radius: 50%; // Круглая форма
+    margin-right: 12px; // Отступ от текста
+    background-color: #fff;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    position: relative;
+
+    // Синяя точка внутри (скрыта по умолчанию)
+    &::after {
       content: '';
-      display: block;
       position: absolute;
-      left: 5px;
-      top: 5px;
-      width: 8px;
-      height: 8px;
+      left: 50%;
+      top: 50%;
+      width: 10px; // Размер точки
+      height: 10px;
+      background-color: $color-accent; // Синяя точка
       border-radius: 50%;
-      background: #fff;
-    }
-    &:disabled {
-      border-color: $color-disabled;
-      background: #f4f4f4;
-      cursor: not-allowed;
+      transform: translate(-50%, -50%) scale(0); // Скрыта
+      transition: transform 0.2s ease;
+      opacity: 0;
     }
   }
 
-  &__label {
-    font-size: 16px;
+  &__label-text {
     color: $color-text;
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
+    transition: color 0.2s;
+  }
+
+  // Состояния
+  &:hover &__custom {
+    border-color: $color-accent; // При наведении - синяя рамка
+  }
+  
+  // При наведении на label, текст меняет цвет
+  &:hover &__label-text {
+    color: $color-accent; // Текст "Макет оказался сильней"
+  }
+
+  &__input:checked + &__custom {
+    border-color: $color-accent; // При нажатии - синяя рамка
+  }
+
+  &__input:checked + &__custom::after {
+    transform: translate(-50%, -50%) scale(1); // Точка появляется
+    opacity: 1;
+  }
+  
+  &__input:checked ~ &__label-text {
+    color: $color-text; // Текст "Последний кораблик остыл"
   }
 }
+
 
 /* ---------------------------
    Аккордеон
 --------------------------- */
 .ui-accordion {
-  border-bottom: 1px solid $color-border;
-  margin-bottom: 24px;
-
-  &__item {
-    border-bottom: 1px solid $color-border;
-    transition: border-color 0.2s;
-    &:hover {
-      border-color: $color-accent;
-    }
-    &.is-open {
-      border-color: $color-accent;
-      font-weight: 500;
-    }
-  }
+  width: 100%;
+  margin-bottom: 40px;
+  font-family: $font-family-main;
 
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
     cursor: pointer;
-    padding: 16px 0;
-    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+    min-height: 48px;
+    transition: color 0.2s;
+  }
+
+  &__title {
+    font-size: 22px;
+    color: #bdbdbd; // по умолчанию серая
     font-weight: 500;
-    color: $color-text;
     transition: color 0.2s;
     user-select: none;
-    -webkit-user-select: none;
-
-    &:hover {
-      color: $color-accent;
-    }
   }
 
-  &__icon {
+  &__arrow {
+    display: inline-block;
     width: 24px;
     height: 24px;
-    transition: transform 0.2s;
-    svg {
+    margin-left: 12px;
+    position: relative;
+    transition: transform 0.3s;
+    &::before {
+      content: '';
       display: block;
-      width: 100%;
-      height: 100%;
-      fill: $color-accent;
-    }
-    .is-open & {
-      transform: rotate(180deg);
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid $color-accent;
+      position: absolute;
+      left: 4px; top: 8px;
     }
   }
 
-  &__body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
-    padding: 0 0;
-
-    &.is-open {
-      max-height: 500px; // достаточно для текста
-      padding: 8px 0 16px 0;
-    }
+  &__content {
+    display: none;
+    color: $color-text;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-top: 18px;
+    margin-bottom: 0;
+    animation: fade-in 0.25s;
   }
+
+  &__line {
+    width: 100%;
+    height: 3px;
+    background: #e0e0e0; // серая по умолчанию
+    border-radius: 2px;
+    margin-top: 12px;
+    transition: background 0.2s, height 0.2s;
+  }
+
+  // --- Hover ---
+  &__header:hover .ui-accordion__title {
+    color: $color-text; // черный
+  }
+  &__header:hover ~ .ui-accordion__line {
+    background: $color-accent; // синяя полоса при ховере
+  }
+
+  // --- Открыто ---
+  &.is-open .ui-accordion__header .ui-accordion__title {
+    color: $color-accent; // синий
+    font-weight: 700;
+  }
+  &.is-open .ui-accordion__arrow {
+    transform: rotate(180deg);
+  }
+  &.is-open .ui-accordion__line {
+    background: $color-accent;
+    height: 5px; // более жирная синяя полоса
+  }
+  &.is-open .ui-accordion__content {
+    display: block;
+    animation: fade-in 0.25s;
+  }
+
+  @include respond-to('tablet') {
+    &__title { font-size: 20px; }
+    &__content { font-size: 16px; }
+  }
+  @include respond-to('mobile') {
+    &__title { font-size: 18px; }
+    &__content { font-size: 15px; }
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

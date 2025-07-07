@@ -1,14 +1,13 @@
 {{!-- src/templates/components/accordion.hbs --}}
 
-<div class="ui-accordion-list">
-  {{#each ui.accordion.items}}
-    <div class="accordion">
-      <button class="accordion__toggle" type="button">
-        {{this.title}}
-      </button>
-      <div class="accordion__content">
-        {{~this.content~}}
-      </div>
-    </div>
-  {{/each}}
+<div class="ui-accordion">
+  <button class="ui-accordion__header" type="button">
+    <span class="ui-accordion__title">Аккордеон</span>
+    <span class="ui-accordion__arrow"></span>
+  </button>
+  <div class="ui-accordion__content">
+    Гоpдость полными вагонами золотыми погонами<br>
+    С юга дуют молодые вет...
+  </div>
+  <div class="ui-accordion__line"></div>
 </div>

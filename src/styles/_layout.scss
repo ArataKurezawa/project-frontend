@@ -9,9 +9,23 @@
 .layout {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
   min-height: 100vh;
-  background: $color-bg;
+}
+
+.main-content {
+  margin-left: 200px;
+  padding: 40px 40px 0 40px;
+  width: 100%;
+  min-width: 0;
+
+  @include respond-to('tablet') {
+    margin-left: 160px;
+    padding: 24px 16px 0 16px;
+  }
+  @include respond-to('mobile') {
+    margin-left: 0;
+    padding: 12px 4px 0 4px;
+  }
 }
 
 /* ---------------------------
@@ -19,17 +33,15 @@
 --------------------------- */
 .sidebar {
   position: fixed;
+  top: 80px; // высота шапки
   left: 0;
-  top: 0;
   width: 200px;
-  height: 100vh;
+  height: calc(100vh - 80px);
   background: #fff;
-  border-right: 1px solid $color-border;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  padding: 32px 0 24px 0;
-
+  
+  z-index: 10;
+  padding: 32px 0;
+  
   @include respond-to('tablet') {
     width: 160px;
     padding: 24px 0 16px 0;

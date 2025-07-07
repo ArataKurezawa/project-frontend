@@ -1,45 +1,14 @@
 {{!-- src/templates/components/select.hbs --}}
 
-<div class="ui-selects">
-  {{!-- Обычный (интерактивный) select --}}
-  <div class="ui-select">
-    <button class="ui-select__toggle" type="button">
-      {{ui.select.placeholder}}
-    </button>
-    <ul class="ui-select__dropdown">
-      {{#each ui.select.options}}
-        <li class="ui-select__option{{#if this.selected}} selected{{/if}}" data-value="{{this.value}}">
-          {{this.label}}
-        </li>
-      {{/each}}
-    </ul>
+<div class="ui-select" tabindex="0">
+  <div class="ui-select__field">
+    <span class="ui-select__value">Выберите что-нибудь</span>
+    <span class="ui-select__arrow"></span>
   </div>
-
-  {{!-- Открытый select (для демонстрации состояния open) --}}
-  <div class="ui-select open">
-    <button class="ui-select__toggle" type="button">
-      {{ui.select.selectedLabel}}
-    </button>
-    <ul class="ui-select__dropdown" style="display: block;">
-      {{#each ui.select.options}}
-        <li class="ui-select__option{{#if this.selected}} selected{{/if}}" data-value="{{this.value}}">
-          {{this.label}}
-        </li>
-      {{/each}}
-    </ul>
-  </div>
-
-  {{!-- Неактивный (disabled) select --}}
-  <div class="ui-select disabled">
-    <button class="ui-select__toggle" type="button" disabled>
-      {{ui.select.placeholder}}
-    </button>
-    <ul class="ui-select__dropdown">
-      {{#each ui.select.options}}
-        <li class="ui-select__option" data-value="{{this.value}}">
-          {{this.label}}
-        </li>
-      {{/each}}
-    </ul>
+  <div class="ui-select__dropdown">
+    <div class="ui-select__option">Первый стул</div>
+    <div class="ui-select__option">Второй стул</div>
+    <div class="ui-select__option is-recommend">Теорема Эскобара</div>
+    <div class="ui-select__option">Выбранный пункт</div>
   </div>
 </div>

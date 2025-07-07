@@ -1,42 +1,47 @@
 {{!-- src/templates/sections/ui.hbs --}}
-
-<section class="section section--ui" id="ui">
-  <h2 class="section__title">
-    {{content.sections.uiTitle}}
-  </h2>
-  <div class="section__desc">
-    {{content.sections.uiDesc}}
-  </div>
-
-  <div class="ui-demo">
-    <div class="ui-demo__group">
-      <h3 class="ui-demo__subtitle">Кнопка</h3>
-      {{> components/button }}
-    </div>
-
-    <div class="ui-demo__group">
-      <h3 class="ui-demo__subtitle">Текстовое поле</h3>
+<section id="ui" class="ui-section">
+  <h2 class="ui-section__title">UI</h2>
+  
+  <div class="ui-section__group">
+    <div class="ui-section__label">Текстовое поле (E-mail):</div>
+    <div class="ui-section__input-demo">
       {{> components/input }}
     </div>
+  </div>
 
-    <div class="ui-demo__group">
-      <h3 class="ui-demo__subtitle">Чекбокс</h3>
-      {{> components/checkbox }}
-    </div>
-
-    <div class="ui-demo__group">
-      <h3 class="ui-demo__subtitle">Радиобаттон</h3>
-      {{> components/radio }}
-    </div>
-
-    <div class="ui-demo__group">
-      <h3 class="ui-demo__subtitle">Выпадающий список</h3>
+  <div class="ui-section__group">
+    <div class="ui-section__label">Выпадающий список:</div>
+    <div class="ui-section__input-demo">
       {{> components/select }}
     </div>
-
-    <div class="ui-demo__group">
-      <h3 class="ui-demo__subtitle">Аккордеон</h3>
+  </div>
+  
+  <div class="ui-section__group">
+    <div class="ui-section__label">Кнопка:</div>
+    <div class="ui-section__input-demo">
+      {{> components/button }}
+    </div>
+  </div>
+  
+  <div class="ui-section__group">
+    <div class="ui-section__label">Чекбокс:</div>
+    <div class="ui-section__input-demo">
+      {{> components/checkbox }}
+    </div>
+  </div>
+  
+  <div class="ui-section__group">
+    <div class="ui-section__label">Радиобаттон:</div>
+    <div class="ui-section__input-demo">
+      {{> components/radio }}
+    </div>
+  </div>
+  
+  <div class="ui-section__group">
+    <div class="ui-section__label">Аккордеон:</div>
+    <div class="ui-section__input-demo">
       {{> components/accordion }}
     </div>
   </div>
 </section>
+

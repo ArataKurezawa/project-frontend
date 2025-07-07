@@ -1,16 +1,45 @@
-<div class="grid-demo__visual-row grid-demo__visual-row--desktop">
-  {{#range 12}}
-    <span class="grid-demo__cell"></span>
-  {{/range}}
-</div>
-<div class="grid-demo__visual-row grid-demo__visual-row--tablet">
-  {{#range 8}}
-    <span class="grid-demo__cell"></span>
-  {{/range}}
-</div>
-<div class="grid-demo__visual-row grid-demo__visual-row--mobile">
-  {{#range 4}}
-    <span class="grid-demo__cell"></span>
-  {{/range}}
-</div>
+<section id="grid" class="grid-section">
+  <h2 class="grid-section__title">Сетка</h2>
+  <div class="grid-section__breakpoints">
 
+    <div class="grid-section__breakpoint">
+      <div class="grid-section__bp-title">Десктоп (1200+)</div>
+      <ul class="grid-section__params">
+        <li>Контент: <b>1072–1312</b></li>
+        <li>Колонок: <b>12</b></li>
+        <li>Ширина колонки: <b>60–80</b></li>
+        <li>Межколонник: <b>32</b></li>
+      </ul>
+      <div class="grid-section__img-wrap">
+        <img class="grid-section__img" src="/src/assets/images/pk.png" alt="Десктоп сетка" />
+      </div>
+    </div>
+
+    <div class="grid-section__breakpoint">
+      <div class="grid-section__bp-title">Планшет (736+)</div>
+      <ul class="grid-section__params">
+        <li>Контент: <b>672–928</b></li>
+        <li>Колонок: <b>8</b></li>
+        <li>Ширина колонки: <b>56–88</b></li>
+        <li>Межколонник: <b>32</b></li>
+      </ul>
+      <div class="grid-section__img-wrap">
+        <img class="grid-section__img" src="/src/assets/images/pl.png" alt="Планшет сетка" />
+      </div>
+    </div>
+
+    <div class="grid-section__breakpoint">
+      <div class="grid-section__bp-title">Телефон (320+)</div>
+      <ul class="grid-section__params">
+        <li>Контент: <b>296–424</b></li>
+        <li>Колонок: <b>4</b></li>
+        <li>Ширина колонки: <b>56–88</b></li>
+        <li>Межколонник: <b>24</b></li>
+      </ul>
+      <div class="grid-section__img-wrap">
+        <img class="grid-section__img" src="/src/assets/images/sm.png" alt="Мобильная сетка" />
+      </div>
+    </div>
+
+  </div>
+</section>

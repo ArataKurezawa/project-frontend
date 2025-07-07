@@ -1,21 +1,8 @@
 // src/scripts/modules/navigation.js
 
-/**
- * Модуль Navigation для управления навигацией по секциям страницы.
- * Подсвечивает активный пункт меню при скролле и поддерживает плавный переход по якорям.
- *
- * Использование:
- * - Меню навигации: <nav class="sidebar-nav"> с <a href="#section-id" class="sidebar-nav__link">
- * - Для плавного скролла добавь класс .smooth-scroll (или используй SmoothScroll.js)
- * - Вызови new Navigation() после загрузки страницы.
- */
 
 export default class Navigation {
-  /**
-   * @param {string} menuSelector - Селектор контейнера меню
-   * @param {string} linkSelector - Селектор ссылок меню
-   * @param {string} activeClass - Класс для активного пункта
-   */
+  
   constructor(
     menuSelector = '.sidebar-nav',
     linkSelector = '.sidebar-nav__link',
@@ -58,7 +45,8 @@ export default class Navigation {
       });
     });
   }
-
+  
+  
   /**
    * Подсвечивает активный пункт меню в зависимости от текущей прокрутки
    */

@@ -1,10 +1,18 @@
 <aside class="sidebar">
   <nav class="sidebar__nav">
-    <ul>
-      <li><a href="#intro">Тестовое задание</a></li>
-      <li><a href="#grid">Сетка</a></li>
-      <li><a href="#typography">Типографика</a></li>
-      <li><a href="#ui">UI</a></li>
+    <ul class="sidebar__list">
+      <li>
+        <a href="#intro" class="sidebar__link{{#if isIntro}} is-active{{/if}}">Напутственное слово</a>
+      </li>
+      <li>
+        <a href="#grid" class="sidebar__link{{#if isGrid}} is-active{{/if}}">Сетка</a>
+      </li>
+      <li>
+        <a href="#typography" class="sidebar__link{{#if isTypography}} is-active{{/if}}">Типографика</a>
+      </li>
+      <li>
+        <a href="#ui" class="sidebar__link{{#if isUI}} is-active{{/if}}">UI</a>
+      </li>
     </ul>
   </nav>
 </aside>

@@ -79,33 +79,37 @@ const html = template({
 document.getElementById('app').innerHTML = html;
 
 // Импорт и инициализация JS-компонентов
-import BurgerMenu from './scripts/components/BurgerMenu.js';
+
+import initBurgerMenu from './scripts/components/BurgerMenu.js';
+initBurgerMenu();
+
 import SmoothScroll from './scripts/components/SmoothScroll.js';
-import TypographySwitch from './scripts/components/TypographySwitch.js';
-import EmailInput from './scripts/components/EmailInput.js';
-import CustomSelect from './scripts/components/CustomSelect.js';
-import Accordion from './scripts/components/Accordion.js';
-import Button from './scripts/components/Button.js';
-import Checkbox from './scripts/components/Checkbox.js';
-import Radio from './scripts/components/Radio.js';
+import initTypographySwitch from './scripts/components/TypographySwitch.js';
+initTypographySwitch();
+import initEmailInput from './scripts/components/EmailInput.js';
+initEmailInput();
+import initCustomSelect from './scripts/components/CustomSelect.js';
+initCustomSelect();
+import initUIButton from './scripts/components/Button.js';
+initUIButton();
+import initUICheckbox from './scripts/components/Checkbox.js';
+import initUIRadio from './scripts/components/Radio.js';
+initUICheckbox();
+initUIRadio();
+import initAccordion from './scripts/components/Accordion.js';
+initAccordion();
+
+
 
 // Импорт логических модулей (Navigation — для scrollspy/sidebar)
 import Navigation from './scripts/modules/navigation.js';
 // import Typography from './scripts/modules/typography.js'; // НЕ нужен для ручного переключения!
 
 document.addEventListener('DOMContentLoaded', () => {
-  new BurgerMenu();
+  
   new SmoothScroll('.smooth-scroll');
-  new TypographySwitch('.typography-switch__btn', '.typography-switch__content');
-  new EmailInput('.ui-email');
-  new CustomSelect('.ui-select');
-  new Accordion('.ui-accordion'); // Используй правильный класс!
-  new Button('.ui-button');
-  new Checkbox('.ui-checkbox__input');
-  new Radio('.ui-radio__input');
-
-  new Navigation(); // Можно передать селекторы, если sidebar отличается
-  // new Typography(); // НЕ инициализируй, если только ручное переключение!
+  new Navigation(); 
+  
 });
 
 // Экспорт для тестирования (опционально)

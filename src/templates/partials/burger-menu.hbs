@@ -1,11 +1,15 @@
 <div class="burger-menu">
   <div class="burger-menu__content">
-    <img src="/src/assets/images/logo.svg" alt="Логотип" class="burger-menu__logo" />
-    <div class="burger-menu__title">Задание выполнил</div>
-    <div class="burger-menu__fio">{{user.fio}}</div>
+    <div class="burger-menu__top">
+      <img class="burger-menu__logo" src="/src/assets/images/logo.png" alt="Логотип" width="64" height="64" />
+      <span class="burger-menu__title">Задание выполнил</span>
+    </div>
+    <div class="burger-menu__fio">
+      {{user.lastName}}<br>
+      {{user.firstName}} {{user.middleName}}
+    </div>
     <div class="burger-menu__desc">{{user.description}}</div>
     <div class="burger-menu__phone">{{user.contacts.phone}}</div>
     <a class="burger-menu__social" href="{{user.contacts.telegram}}" target="_blank">Telegram</a>
-    <!-- Добавь другие соцсети по желанию -->
   </div>
 </div>

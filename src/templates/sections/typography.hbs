@@ -1,41 +1,98 @@
-{{!-- src/templates/sections/typography.hbs --}}
-
-<section class="section section--typography" id="typography">
-  <h2 class="section__title">
-    {{content.sections.typographyTitle}}
-  </h2>
-  <div class="section__desc">
-    {{content.sections.typographyDesc}}
+<section id="typography" class="typography-section">
+  <h2 class="typography-section__title">Типографика</h2>
+  <div class="typography-section__font">
+    Используется шрифт <span class="typography-section__font-name">Graphik</span>
+    <span class="typography-section__font-code">(GraphikLCG)</span>
   </div>
-
-  <div class="typography-demo">
-    <div class="typography-demo__row">
-      <div class="typography-demo__col">
-        <div class="typography-demo__label">Десктоп</div>
-        <div class="typography-demo__set typography-demo__set--desktop">
-          <h1 class="typography-demo__h1">Заголовок H1, 48/56, bold</h1>
-          <h2 class="typography-demo__h2">Заголовок H2, 32/40, bold</h2>
-          <h3 class="typography-demo__h3">Заголовок H3, 24/32, medium</h3>
-          <h4 class="typography-demo__h4">Заголовок H4, 18/28, medium</h4>
-          <p class="typography-demo__lead">Лид P_Lead, 24/32, regular</p>
-          <p class="typography-demo__p18">Крупный текст P_18, 18/28, regular</p>
-          <p class="typography-demo__p16">Основной текст P_16, 16/24, regular</p>
-          <p class="typography-demo__p14">Вспомогательный текст P_14, 14/20, regular</p>
-        </div>
-      </div>
-      <div class="typography-demo__col">
-        <div class="typography-demo__label">Телефон</div>
-        <div class="typography-demo__set typography-demo__set--mobile">
-          <h1 class="typography-demo__h1">Заголовок H1, 32/40, bold</h1>
-          <h2 class="typography-demo__h2">Заголовок H2, 28/36, bold</h2>
-          <h3 class="typography-demo__h3">Заголовок H3, 20/28, medium</h3>
-          <h4 class="typography-demo__h4">Заголовок H4, 18/28, medium</h4>
-          <p class="typography-demo__lead">Лид P_Lead, 20/28, regular</p>
-          <p class="typography-demo__p18">Крупный текст P_18, 18/28, regular</p>
-          <p class="typography-demo__p16">Основной текст P_16, 16/24, regular</p>
-          <p class="typography-demo__p14">Вспомогательный текст P_14, 14/20, regular</p>
-        </div>
-      </div>
+  <div class="typography-section__switcher">
+    <button class="typography-switch-btn is-active" data-type="desktop">Десктоп</button>
+    <button class="typography-switch-btn" data-type="mobile">Телефон</button>
+    <div class="typography-section__switcher-line">
+      <div class="typography-section__switcher-indicator"></div>
+    </div>
+  </div>
+  <div class="typography-section__content" data-type="desktop">
+    <div class="typography-sample">
+      <div class="typography-sample__label">Заголовок H1</div>
+      <div class="typography-sample__value">48/56, bold</div>
+      <h1 class="typography-sample__demo demo-h1">Текст заголовка</h1>
+    </div>
+    <div class="typography-sample">
+      <div class="typography-sample__label">Заголовок H2</div>
+      <div class="typography-sample__value">32/40, bold</div>
+      <h2 class="typography-sample__demo demo-h2">Текст заголовка</h2>
+    </div>
+    <div class="typography-sample">
+      <div class="typography-sample__label">Заголовок H3</div>
+      <div class="typography-sample__value">24/32, medium</div>
+      <h3 class="typography-sample__demo demo-h3">Текст заголовка</h3>
+    </div>
+    <div class="typography-sample">
+      <div class="typography-sample__label">Заголовок H4</div>
+      <div class="typography-sample__value">18/28, medium</div>
+      <h4 class="typography-sample__demo demo-h4">Текст заголовка</h4>
+    </div>
+    <div class="typography-sample">
+      <div class="typography-sample__label">Лид P_Lead</div>
+      <div class="typography-sample__value">24/32, regular</div>
+      <p class="typography-sample__demo demo-lead">Текст лида</p>
+    </div>
+    <div class="typography-sample">
+      <div class="typography-sample__label">Крупный текст P_18</div>
+      <div class="typography-sample__value">18/28, regular</div>
+      <p class="typography-sample__demo demo-large">Крупный текст</p>
+    </div>
+    <div class="typography-sample">
+      <div class="typography-sample__label">Основной текст P_16</div>
+      <div class="typography-sample__value">16/24, regular</div>
+      <p class="typography-sample__demo demo-main">Основной текст</p>
+    </div>
+    <div class="typography-sample">
+      <div class="typography-sample__label">Вспомогательный текст P_14</div>
+      <div class="typography-sample__value">14/20, regular</div>
+      <p class="typography-sample__demo demo-small">Вспомогательный текст</p>
+    </div>
+  </div>
+  <div class="typography-section__content" data-type="mobile" style="display: none;">
+    <div class="typography-sample">
+      <div class="typography-sample__label">Заголовок H1</div>
+      <div class="typography-sample__value">32/40, bold</div>
+      <h1 class="typography-sample__demo demo-h1">Текст заголовка</h1>
+    </div>
+    <div class="typography-sample">
+      <div class="typography-sample__label">Заголовок H2</div>
+      <div class="typography-sample__value">28/36, bold</div>
+      <h2 class="typography-sample__demo demo-h2">Текст заголовка</h2>
+    </div>
+    <div class="typography-sample">
+      <div class="typography-sample__label">Заголовок H3</div>
+      <div class="typography-sample__value">20/28, medium</div>
+      <h3 class="typography-sample__demo demo-h3">Текст заголовка</h3>
+    </div>
+    <div class="typography-sample">
+      <div class="typography-sample__label">Заголовок H4</div>
+      <div class="typography-sample__value">18/28, medium</div>
+      <h4 class="typography-sample__demo demo-h4">Текст заголовка</h4>
+    </div>
+    <div class="typography-sample">
+      <div class="typography-sample__label">Лид P_Lead</div>
+      <div class="typography-sample__value">20/28, regular</div>
+      <p class="typography-sample__demo demo-lead">Текст лида</p>
+    </div>
+    <div class="typography-sample">
+      <div class="typography-sample__label">Крупный текст P_18</div>
+      <div class="typography-sample__value">18/28, regular</div>
+      <p class="typography-sample__demo demo-large">Крупный текст</p>
+    </div>
+    <div class="typography-sample">
+      <div class="typography-sample__label">Основной текст P_16</div>
+      <div class="typography-sample__value">16/24, regular</div>
+      <p class="typography-sample__demo demo-main">Основной текст</p>
+    </div>
+    <div class="typography-sample">
+      <div class="typography-sample__label">Вспомогательный текст P_14</div>
+      <div class="typography-sample__value">14/20, regular</div>
+      <p class="typography-sample__demo demo-small">Вспомогательный текст</p>
     </div>
   </div>
 </section>

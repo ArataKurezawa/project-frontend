@@ -1,31 +1,9 @@
 {{!-- src/templates/components/checkbox.hbs --}}
-
-<div class="ui-checkboxes">
-  {{!-- Обычный (интерактивный) чекбокс --}}
-  <label class="ui-checkbox">
-    <input type="checkbox" class="ui-checkbox__input" />
-    <span class="ui-checkbox__box"></span>
-    <span class="ui-checkbox__label">{{ui.checkbox.label}}</span>
-  </label>
-
-  {{!-- Наведённый (hover) чекбокс --}}
-  <label class="ui-checkbox hover">
-    <input type="checkbox" class="ui-checkbox__input" tabindex="-1" aria-disabled="true" />
-    <span class="ui-checkbox__box"></span>
-    <span class="ui-checkbox__label">{{ui.checkbox.label}}</span>
-  </label>
-
-  {{!-- Нажатый (active) чекбокс --}}
-  <label class="ui-checkbox active">
-    <input type="checkbox" class="ui-checkbox__input" tabindex="-1" aria-disabled="true" checked />
-    <span class="ui-checkbox__box"></span>
-    <span class="ui-checkbox__label">{{ui.checkbox.label}}</span>
-  </label>
-
-  {{!-- Неактивный (disabled) чекбокс --}}
-  <label class="ui-checkbox disabled">
-    <input type="checkbox" class="ui-checkbox__input" disabled />
-    <span class="ui-checkbox__box"></span>
-    <span class="ui-checkbox__label">{{ui.checkbox.label}}</span>
-  </label>
-</div>
+<label class="ui-checkbox">
+  <input type="checkbox" class="ui-checkbox__input">
+  <span class="ui-checkbox__custom"></span>
+  <span class="ui-checkbox__label-text">
+    <span class="default-text">Выбери меня</span>
+    <span class="checked-text" style="display:none;">Птица счастья завтрашнего дня</span>
+  </span>
+</label>
