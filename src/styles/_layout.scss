@@ -6,25 +6,65 @@
 /* ---------------------------
    Layout: Базовый контейнер
 --------------------------- */
-.layout {
-  display: flex;
-  flex-direction: row;
+.site-wrapper {
+  width: 100%;
+  max-width: 1344px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 64px;
+  padding-right: 64px;
+  box-sizing: border-box;
   min-height: 100vh;
 }
 
-.main-content {
-  margin-left: 200px;
-  padding: 40px 40px 0 40px;
-  width: 100%;
-  min-width: 0;
-
-  @include respond-to('tablet') {
-    margin-left: 160px;
-    padding: 24px 16px 0 16px;
+@media (max-width: 1279px) {
+  .site-wrapper {
+    max-width: 928px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
-  @include respond-to('mobile') {
-    margin-left: 0;
-    padding: 12px 4px 0 4px;
+}
+
+@media (max-width: 767px) {
+  .site-wrapper {
+    max-width: 424px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.header {
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1279px) {
+  .header {
+    min-height: 64px;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    min-height: 56px;
+  }
+}
+
+.layout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
+}
+
+@media (max-width: 767px) {
+  .layout {
+    flex-direction: column;
   }
 }
 
@@ -33,44 +73,110 @@
 --------------------------- */
 .sidebar {
   position: fixed;
-  top: 80px; // высота шапки
-  left: 0;
-  width: 200px;
+  top: 80px;
+  left: 64px;
+  width: 147px;
   height: calc(100vh - 80px);
   background: #fff;
-  
   z-index: 10;
   padding: 32px 0;
-  
-  @include respond-to('tablet') {
-    width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (max-width: 1279px) {
+  .sidebar {
+    top: 64px;
+    left: 32px;
+    width: 120px;
     padding: 24px 0 16px 0;
-  }
-  @include respond-to('mobile') {
-    display: none; // На мобилке якорное меню скрыто
+    gap: 16px;
   }
 }
+
+@media (max-width: 767px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    gap: 8px;
+    padding: 0;
+    margin-bottom: 16px;
+    background: transparent;
+    display: none;
+  }
+}
+
 
 /* ---------------------------
    Основная область контента
 --------------------------- */
-.layout__main {
-  flex: 1 1 auto;
+.main-content {
+  margin-left: 376px;
+  width: calc(100% - 376px - 64px);
   min-width: 0;
-  padding: 0;
-  background: $color-bg;
-  display: flex;
-  flex-direction: column;
-  margin-left: 200px;
+  box-sizing: border-box;
+  padding-top: 40px;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
 
   @include respond-to('tablet') {
-    margin-left: 160px;
+    margin-left: 200px;
+    width: calc(100% - 200px - 32px);
+    padding-top: 24px;
   }
   @include respond-to('mobile') {
     margin-left: 0;
+    width: 100%;
+    padding-top: 12px;
   }
 }
 
+
+@media (max-width: 1279px) {
+  .main-content {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+    padding-top: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding-top: 12px;
+  }
+}
+.footer {
+  width: 100%;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  color: #222;
+  margin-top: 64px;
+  margin-bottom: 24px;
+  padding-left: 0;
+}
+
+@media (max-width: 1279px) {
+  .footer {
+    font-size: 18px;
+    margin-top: 48px;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    font-size: 16px;
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+}
 /* ---------------------------
    Grid-контейнер (адаптивная сетка)
 --------------------------- */

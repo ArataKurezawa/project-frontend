@@ -113,6 +113,9 @@
 
 .grid-section {
   margin-bottom: 64px;
+  padding-left: 0;
+  padding-right: 0;
+  
 
   &__title {
     font-family: $font-family-main;
@@ -120,36 +123,54 @@
     line-height: 40px;
     font-weight: 700;
     color: $color-text;
+    margin-bottom: 24px;
+    scroll-margin-top: 100px;
+    letter-spacing: 0.01em;
+  }
+
+  &__desc {
+    font-size: 18px;
+    color: $color-text-secondary;
     margin-bottom: 32px;
-    scroll-margin-top: 100px; // для якоря
+    line-height: 1.6;
+    max-width: 600px;
   }
 
   &__breakpoints {
     display: flex;
     gap: 32px;
     flex-wrap: wrap;
+    justify-content: flex-start;
+
     @include respond-to('tablet') {
       flex-direction: column;
       gap: 24px;
+    }
+    @include respond-to('mobile') {
+      flex-direction: column;
+      gap: 16px;
     }
   }
 
   &__breakpoint {
     background: #faf9ff;
     border-radius: 24px;
-    box-shadow: 0 2px 8px rgba(34,34,34,0.06);
+    
     padding: 32px 32px 24px 32px;
-    flex: 1 1 320px;
-    min-width: 280px;
-    max-width: 380px;
+    flex: 0 1 592px; // ширина по макету для десктопа
+    min-width: 320px;
+    max-width: 592px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
-    @include respond-to('mobile') {
-      padding: 16px 8px 12px 8px;
-      min-width: 0;
+    @include respond-to('tablet') {
+      padding: 24px 16px 16px 16px;
       max-width: 100%;
+      min-width: 0;
+    }
+    @include respond-to('mobile') {
+      padding: 12px 4px 8px 4px;
     }
   }
 
@@ -157,28 +178,67 @@
     font-size: 20px;
     font-weight: 700;
     color: $color-accent;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    letter-spacing: 0.01em;
   }
 
-  &__params {
-    font-size: 16px;
-    color: $color-text-secondary;
-    margin-bottom: 16px;
-    padding-left: 0;
-    list-style: none;
+  // Полоска с характеристиками (Контент | Колонок | Ширина колонки | Межколонник)
+  &__params-row {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 24px;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-end;
 
-    li {
-      margin-bottom: 2px;
-      b {
-        font-weight: 700;
-        color: $color-text;
-      }
+    @include respond-to('tablet') {
+      gap: 24px;
+    }
+    @include respond-to('mobile') {
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__param {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+    flex: 1 1 0;
+
+    @include respond-to('mobile') {
+      min-width: 0;
+      width: 100%;
+    }
+  }
+
+  &__param-title {
+    font-size: 16px;
+    color: #757575;
+    margin-bottom: 6px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  &__param-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: $color-text;
+    text-align: center;
+
+    @include respond-to('tablet') {
+      font-size: 20px;
+    }
+    @include respond-to('mobile') {
+      font-size: 18px;
     }
   }
 
   &__img-wrap {
     width: 100%;
-    max-width: 904px;
+    max-width: 904px; // по макету
     max-height: 480px;
     overflow: hidden;
     border-radius: 12px;
@@ -187,6 +247,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+    padding: 0;
   }
 
   &__img {
@@ -198,6 +260,7 @@
     max-width: 904px;
     max-height: 480px;
     display: block;
+    border-radius: 12px;
   }
 }
 
